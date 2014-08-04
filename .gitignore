@@ -1,6 +1,7 @@
 *.swp
 *~
 .DS_Store
+.idea
 /settings.php
 /demo1/settings.php
 /demo-old/settings.php

@@ -1,6 +1,16 @@
 CHANGELOG
 =========
 
+v.3.0.0
+-------
+
+* Forked from: https://github.com/onelogin/php-saml
+* Removed everything except for the 2.0 version of the toolkit
+* Configuration now _has_ to be provided through an array
+* AuthNRequest now stores id used so it can be retrieved later
+* Login method now returns an array with the SSO url and the AuthNRequest
+* processResponse now supports passing the current url
+
 v.2.1.0
 -------
 
