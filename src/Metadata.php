@@ -77,6 +77,7 @@ ORGANIZATION;
 				$contactsInfo[] = <<<CONTACT
     <md:ContactPerson contactType="{$type}">
         <md:GivenName>{$info['givenName']}</md:GivenName>
+        <md:SurName>{$info['surName']}</md:SurName>
         <md:EmailAddress>{$info['emailAddress']}</md:EmailAddress>
     </md:ContactPerson>
 CONTACT;
