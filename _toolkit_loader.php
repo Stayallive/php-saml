@@ -12,9 +12,6 @@ if (file_exists('vendor/autoload.php')) {
     require 'vendor/autoload.php';
 }
 
-// Load now external libs
-require_once $extlibDir . 'xmlseclibs/xmlseclibs.php';
-
 $folderInfo = scandir($libDir);
 
 foreach ($folderInfo as $element) {

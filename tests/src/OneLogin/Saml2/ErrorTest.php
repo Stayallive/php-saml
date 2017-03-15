@@ -1,9 +1,11 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Unit tests for Error class
  */
-class OneLogin_Saml2_ErrorTest extends PHPUnit_Framework_TestCase
+class OneLogin_Saml2_ErrorTest extends TestCase
 {
     /**
     * Tests the OneLogin_Saml2_Error Constructor. 

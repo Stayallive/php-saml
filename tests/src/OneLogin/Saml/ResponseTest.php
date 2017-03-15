@@ -1,6 +1,8 @@
 <?php
 
-class OneLogin_Saml_ResponseTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class OneLogin_Saml_ResponseTest extends TestCase
 {
     private $_settings;
 

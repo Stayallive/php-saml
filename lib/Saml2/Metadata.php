@@ -1,5 +1,8 @@
 <?php
 
+use RobRichards\XMLSecLibs\XMLSecurityKey;
+use RobRichards\XMLSecLibs\XMLSecurityDSig;
+
 /**
  * Metadata lib of OneLogin PHP Toolkit
  *
@@ -128,7 +131,7 @@ CONTACT;
                     $reqAttrAuxStr = '>';
                     if (is_string($attribute['attributeValue'])) {
                         $attribute['attributeValue'] = array($attribute['attributeValue']);
-                    }                    
+                    }
                     foreach ($attribute['attributeValue'] as $attrValue) {
                         $reqAttrAuxStr .=<<<ATTRIBUTEVALUE
 

@@ -1,5 +1,8 @@
 <?php
 
+use RobRichards\XMLSecLibs\XMLSecurityKey;
+use RobRichards\XMLSecLibs\XMLSecurityDSig;
+
 /**
  * Configuration of the OneLogin PHP Toolkit
  *

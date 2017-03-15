@@ -37,10 +37,12 @@ $settingsInfo = array (
     'contactPerson' => array (
         'technical' => array (
             'givenName' => 'technical_name',
+            'surName' => 'technical_name',
             'emailAddress' => 'technical@example.com',
         ),
         'support' => array (
             'givenName' => 'support_name',
+            'surName' => 'support_name',
             'emailAddress' => 'support@example.com',
         ),
     ),

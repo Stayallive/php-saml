@@ -1,6 +1,8 @@
 <?php
 
-class OneLogin_Saml_XmlSecTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class OneLogin_Saml_XmlSecTest extends TestCase
 {
     private $_settings;
 

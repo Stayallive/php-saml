@@ -1,5 +1,7 @@
 <?php
 
+use RobRichards\XMLSecLibs\XMLSecurityKey;
+
 /**
  * Main class of OneLogin's PHP Toolkit
  *
@@ -669,7 +671,7 @@ class OneLogin_Saml2_Auth
                 $response = $this->_lastResponse->saveXML();
             }
         }
-        
+
         return $response;
     }
 }

@@ -1,5 +1,9 @@
 <?php
- 
+
+use RobRichards\XMLSecLibs\XMLSecEnc;
+use RobRichards\XMLSecLibs\XMLSecurityKey;
+use RobRichards\XMLSecLibs\XMLSecurityDSig;
+
 /**
  * Utils of OneLogin PHP Toolkit
  *
@@ -262,7 +266,7 @@ class OneLogin_Saml2_Utils
             );
         }
 
-        
+
         /* Add encoded parameters */
         if (strpos($url, '?') === false) {
             $paramPrefix = '?';
@@ -614,7 +618,7 @@ class OneLogin_Saml2_Utils
                 if (!empty($extractedInfo)) {
                     $result .= $extractedInfo;
                 }
-            } 
+            }
         }
         return $result;
     }
@@ -828,7 +832,7 @@ class OneLogin_Saml2_Utils
      *
      * @param DOMDocument $dom     The DOMDocument
      * @param string      $query   Xpath Expresion
-     * @param DomElement  $context Context Node (DomElement) 
+     * @param DomElement  $context Context Node (DomElement)
      *
      * @return DOMNodeList The queried nodes
      */
@@ -1095,7 +1099,7 @@ class OneLogin_Saml2_Utils
                 // To protect against "key oracle" attacks
                 throw new OneLogin_Saml2_ValidationError(
                     'Unknown key size for encryption algorithm: ' . var_export($symmetricKey->type, true),
-                    OneLogin_Saml2_ValidationError::KEY_ALGORITHM_ERROR                                        
+                    OneLogin_Saml2_ValidationError::KEY_ALGORITHM_ERROR
                 );
             }
 
@@ -1121,7 +1125,7 @@ class OneLogin_Saml2_Utils
                     'Algorithm mismatch between input key and key in message. ' .
                     'Key was: ' . var_export($inputKeyAlgo, true) . '; message was: ' .
                     var_export($symKeyAlgo, true),
-                    OneLogin_Saml2_ValidationError::KEY_ALGORITHM_ERROR                                        
+                    OneLogin_Saml2_ValidationError::KEY_ALGORITHM_ERROR
                 );
             }
             $symmetricKey = $inputKey;
@@ -1137,15 +1141,15 @@ class OneLogin_Saml2_Utils
         if (!$newDoc) {
             throw new OneLogin_Saml2_ValidationError(
                 'Failed to parse decrypted XML.',
-                OneLogin_Saml2_ValidationError::INVALID_XML_FORMAT                                        
+                OneLogin_Saml2_ValidationError::INVALID_XML_FORMAT
             );
         }
- 
+
         $decryptedElement = $newDoc->firstChild->firstChild;
         if ($decryptedElement === null) {
             throw new OneLogin_Saml2_ValidationError(
                 'Missing encrypted element.',
-                OneLogin_Saml2_ValidationError::MISSING_ENCRYPTED_ELEMENT                                        
+                OneLogin_Saml2_ValidationError::MISSING_ENCRYPTED_ELEMENT
             );
         }
 

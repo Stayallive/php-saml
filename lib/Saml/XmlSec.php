@@ -1,5 +1,8 @@
 <?php
 
+use RobRichards\XMLSecLibs\XMLSecEnc;
+use RobRichards\XMLSecLibs\XMLSecurityDSig;
+
 /**
  * Determine if the SAML response is valid using a provided x509 certificate.
  */

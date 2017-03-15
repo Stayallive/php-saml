@@ -1,9 +1,11 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Unit tests for Logout Response
  */
-class OneLogin_Saml2_LogoutResponseTest extends PHPUnit_Framework_TestCase
+class OneLogin_Saml2_LogoutResponseTest extends TestCase
 {
     private $_settings;
 

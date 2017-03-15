@@ -1,5 +1,8 @@
 <?php
 
+use RobRichards\XMLSecLibs\XMLSecEnc;
+use RobRichards\XMLSecLibs\XMLSecurityKey;
+
 /**
  * SAML 2 Authentication Response
  *
@@ -166,7 +169,7 @@ class OneLogin_Saml2_Response
                 }
 
                 $currentURL = OneLogin_Saml2_Utils::getSelfRoutedURLNoQuery();
-                
+
                 if ($this->document->documentElement->hasAttribute('InResponseTo')) {
                     $responseInResponseTo = $this->document->documentElement->getAttribute('InResponseTo');
                 }
@@ -343,7 +346,7 @@ class OneLogin_Saml2_Response
                         OneLogin_Saml2_ValidationError::NO_SIGNED_ASSERTION
                     );
                 }
-                
+
                 if ($security['wantMessagesSigned'] && !$hasSignedResponse) {
                     throw new OneLogin_Saml2_ValidationError(
                         "The Message of the Response is not signed and the SP requires it",
@@ -1004,7 +1007,7 @@ class OneLogin_Saml2_Response
                 OneLogin_Saml2_Error::PRIVATE_KEY_NOT_FOUND
             );
         }
-        
+
         $objenc = new XMLSecEnc();
         $encData = $objenc->locateEncryptedData($dom);
         if (!$encData) {
@@ -1013,7 +1016,7 @@ class OneLogin_Saml2_Response
                 OneLogin_Saml2_ValidationError::MISSING_ENCRYPTED_ELEMENT
             );
         }
-        
+
         $objenc->setNode($encData);
         $objenc->type = $encData->getAttribute("Type");
         if (!$objKey = $objenc->locateKey()) {
@@ -1034,7 +1037,7 @@ class OneLogin_Saml2_Response
                 $objKeyInfo->loadKey($pem, false, false);
             }
         }
-                
+
         if (empty($objKey->key)) {
             $objKey->loadKey($key);
         }
@@ -1073,7 +1076,7 @@ class OneLogin_Saml2_Response
 
     /* After execute a validation process, if fails this method returns the cause
      *
-     * @return string Cause 
+     * @return string Cause
      */
     public function getError()
     {

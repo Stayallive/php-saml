@@ -1,9 +1,13 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
+use RobRichards\XMLSecLibs\XMLSecurityKey;
+use RobRichards\XMLSecLibs\XMLSecurityDSig;
+
 /**
  * Unit tests for Metadata class
  */
-class OneLogin_Saml2_MetadataTest extends PHPUnit_Framework_TestCase
+class OneLogin_Saml2_MetadataTest extends TestCase
 {
 
     /**

@@ -1,11 +1,15 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
+use RobRichards\XMLSecLibs\XMLSecurityKey;
+use RobRichards\XMLSecLibs\XMLSecurityDSig;
+
 /**
  * Unit tests for Utils class
  *
  * @backupStaticAttributes enabled
  */
-class OneLogin_Saml2_UtilsTest extends PHPUnit_Framework_TestCase
+class OneLogin_Saml2_UtilsTest extends TestCase
 {
 
     /**

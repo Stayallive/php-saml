@@ -1,9 +1,12 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
+use RobRichards\XMLSecLibs\XMLSecurityKey;
+
 /**
  * Unit tests for Auth class
  */
-class OneLogin_Saml2_AuthTest extends PHPUnit_Framework_TestCase
+class OneLogin_Saml2_AuthTest extends TestCase
 {
     private $_auth;
     private $_settingsInfo;

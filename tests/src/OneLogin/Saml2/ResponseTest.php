@@ -1,10 +1,12 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Unit tests for Response messages
  */
 
-class OneLogin_Saml2_ResponseTest extends PHPUnit_Framework_TestCase
+class OneLogin_Saml2_ResponseTest extends TestCase
 {
     private $_settings;
 

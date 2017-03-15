@@ -1,9 +1,11 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Unit tests for AuthN Request
  */
-class OneLogin_Saml2_AuthnRequestTest extends PHPUnit_Framework_TestCase
+class OneLogin_Saml2_AuthnRequestTest extends TestCase
 {
     private $_settings;
 

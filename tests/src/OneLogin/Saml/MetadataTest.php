@@ -1,9 +1,11 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Unit tests for Metadata class
  */
-class OneLogin_Saml_MetadataTest extends PHPUnit_Framework_TestCase
+class OneLogin_Saml_MetadataTest extends TestCase
 {
     /**
     * Tests the OneLogin_Saml_Metadata Constructor and the getXml method. 

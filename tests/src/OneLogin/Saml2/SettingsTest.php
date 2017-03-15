@@ -1,9 +1,11 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Unit tests for Setting class
  */
-class OneLogin_Saml2_SettingsTest extends PHPUnit_Framework_TestCase
+class OneLogin_Saml2_SettingsTest extends TestCase
 {
 
     /**

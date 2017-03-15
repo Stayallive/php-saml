@@ -5,11 +5,9 @@ ob_start();
 $basePath = dirname(dirname(__FILE__));
 
 require_once $basePath.'/_toolkit_loader.php';
+require_once $basePath.'/vendor/autoload.php';
 
 if (!defined('TEST_ROOT')) define('TEST_ROOT', dirname(__FILE__));
-
-if (!defined('XMLSECLIBS_DIR')) define('XMLSECLIBS_DIR', $basePath.'/extlib/xmlseclibs/');
-require_once XMLSECLIBS_DIR . 'xmlseclibs.php';
 
 if (!defined('ONELOGIN_SAML_DIR')) define('ONELOGIN_SAML_DIR', $basePath.'/lib/Saml/');
 require_once ONELOGIN_SAML_DIR . 'AuthRequest.php';
