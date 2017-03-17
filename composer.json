@@ -1,5 +1,5 @@
 {
-    "name": "onelogin/php-saml",
+    "name": "stayallive/php-saml",
     "description": "OneLogin PHP SAML Toolkit",
     "license": "MIT",
     "version": "2.10.5",
