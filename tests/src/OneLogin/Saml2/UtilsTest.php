@@ -37,6 +37,21 @@ class OneLogin_Saml2_UtilsTest extends TestCase
     }
 */
 
+    private static $_server;
+
+    public static function setUpBeforeClass()
+    {
+        self::$_server = $_SERVER;
+    }
+
+    /**
+     * Initializes the Test Suite
+     */
+    public function setUp()
+    {
+        $_SERVER = self::$_server;
+    }
+
     /**
     * Tests the loadXML method of the OneLogin_Saml2_Utils
     *
@@ -355,10 +370,10 @@ class OneLogin_Saml2_UtilsTest extends TestCase
     public function testisHTTPS()
     {
         $this->assertFalse(OneLogin_Saml2_Utils::isHTTPS());
-        
+
         $_SERVER['HTTPS'] = 'on';
         $this->assertTrue(OneLogin_Saml2_Utils::isHTTPS());
-    
+
         unset($_SERVER['HTTPS']);
         $this->assertFalse(OneLogin_Saml2_Utils::isHTTPS());
         $_SERVER['HTTP_HOST'] = 'example.com:443';
@@ -459,7 +474,7 @@ class OneLogin_Saml2_UtilsTest extends TestCase
         $this->assertNull(OneLogin_Saml2_Utils::getSelfPort());
         $this->assertNull(OneLogin_Saml2_Utils::getBaseURLPath());
 
-        $this->assertEquals($expectedUrlNQ, OneLogin_Saml2_Utils::getSelfURLNoQuery());       
+        $this->assertEquals($expectedUrlNQ, OneLogin_Saml2_Utils::getSelfURLNoQuery());
         $this->assertEquals($expectedRoutedUrlNQ, OneLogin_Saml2_Utils::getSelfRoutedURLNoQuery());
         $this->assertEquals($expectedUrl, OneLogin_Saml2_Utils::getSelfURL());
 
@@ -467,20 +482,20 @@ class OneLogin_Saml2_UtilsTest extends TestCase
         $expectedUrlNQ2 = 'http://anothersp.example.com:81/example2/route.php';
         $expectedRoutedUrlNQ2 = 'http://anothersp.example.com:81/example2/route.php';
         $expectedUrl2 = 'http://anothersp.example.com:81/example2/route.php?x=test';
-        
+
         $this->assertEquals('http', OneLogin_Saml2_Utils::getSelfProtocol());
         $this->assertEquals('anothersp.example.com', OneLogin_Saml2_Utils::getSelfHost());
         $this->assertEquals('81', OneLogin_Saml2_Utils::getSelfPort());
         $this->assertEquals('/example2/', OneLogin_Saml2_Utils::getBaseURLPath());
 
-        $this->assertEquals($expectedUrlNQ2, OneLogin_Saml2_Utils::getSelfURLNoQuery());       
+        $this->assertEquals($expectedUrlNQ2, OneLogin_Saml2_Utils::getSelfURLNoQuery());
         $this->assertEquals($expectedRoutedUrlNQ2, OneLogin_Saml2_Utils::getSelfRoutedURLNoQuery());
         $this->assertEquals($expectedUrl2, OneLogin_Saml2_Utils::getSelfURL());
 
         $_SERVER['PATH_INFO'] = '/test';
         $expectedUrlNQ2 = 'http://anothersp.example.com:81/example2/route.php/test';
 
-        $this->assertEquals($expectedUrlNQ2, OneLogin_Saml2_Utils::getSelfURLNoQuery());       
+        $this->assertEquals($expectedUrlNQ2, OneLogin_Saml2_Utils::getSelfURLNoQuery());
         $this->assertEquals($expectedRoutedUrlNQ2, OneLogin_Saml2_Utils::getSelfRoutedURLNoQuery());
         $this->assertEquals($expectedUrl2, OneLogin_Saml2_Utils::getSelfURL());
     }

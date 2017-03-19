@@ -21,6 +21,8 @@ class OneLogin_Saml2_AuthTest extends TestCase
 
         $this->_settingsInfo = $settingsInfo;
         $this->_auth = new OneLogin_Saml2_Auth($settingsInfo);
+
+        $_GET = [];
     }
 
     /**
