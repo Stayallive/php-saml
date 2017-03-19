@@ -337,8 +337,8 @@ class OneLogin_Saml2_Settings
         }
 
         // Related to nameID
-        if (!isset($this->_sp['NameIDFormat'])) {
-            $this->_sp['NameIDFormat'] = OneLogin_Saml2_Constants::NAMEID_UNSPECIFIED;
+        if (!isset($this->_sp['nameIDFormat'])) {
+            $this->_sp['nameIDFormat'] = OneLogin_Saml2_Constants::NAMEID_UNSPECIFIED;
         }
         if (!isset($this->_security['nameIdEncrypted'])) {
             $this->_security['nameIdEncrypted'] = false;

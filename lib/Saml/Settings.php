@@ -63,7 +63,7 @@ class OneLogin_Saml_Settings
         $values['sp']['assertionConsumerService'] = array(
             'url' => $this->spReturnUrl,
         );
-        $values['sp']['NameIDFormat'] = $this->requestedNameIdFormat;
+        $values['sp']['nameIDFormat'] = $this->requestedNameIdFormat;
 
         $values['idp'] = array();
         $values['idp']['entityId'] = $this->idpSingleSignOnUrl;

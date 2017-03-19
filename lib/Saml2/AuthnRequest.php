@@ -46,7 +46,7 @@ class OneLogin_Saml2_AuthnRequest
 
         $nameIdPolicyStr = '';
         if ($setNameIdPolicy) {
-            $nameIDPolicyFormat = $spData['NameIDFormat'];
+            $nameIDPolicyFormat = $spData['nameIDFormat'];
             if (isset($security['wantNameIdEncrypted']) && $security['wantNameIdEncrypted']) {
                 $nameIDPolicyFormat = OneLogin_Saml2_Constants::NAMEID_ENCRYPTED;
             }

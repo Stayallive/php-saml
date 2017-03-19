@@ -160,7 +160,7 @@ METADATA_TEMPLATE;
                      cacheDuration="PT{$cacheDuration}S"
                      entityID="{$sp['entityId']}">
     <md:SPSSODescriptor AuthnRequestsSigned="{$strAuthnsign}" WantAssertionsSigned="{$strWsign}" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
-{$sls}        <md:NameIDFormat>{$sp['NameIDFormat']}</md:NameIDFormat>
+{$sls}        <md:NameIDFormat>{$sp['nameIDFormat']}</md:NameIDFormat>
         <md:AssertionConsumerService Binding="{$sp['assertionConsumerService']['binding']}"
                                      Location="{$sp['assertionConsumerService']['url']}"
                                      index="1" />

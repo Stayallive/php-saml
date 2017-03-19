@@ -68,7 +68,7 @@ class OneLogin_Saml2_LogoutRequest
 
             if (!empty($nameId)) {
                 if (empty($nameIdFormat)) {
-                    $nameIdFormat = $spData['NameIDFormat'];
+                    $nameIdFormat = $spData['nameIDFormat'];
                 }
                 $spNameQualifier = null;
             } else {
