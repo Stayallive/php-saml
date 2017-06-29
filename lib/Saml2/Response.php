@@ -376,8 +376,15 @@ class OneLogin_Saml2_Response
                 $fingerprint = $idpData['certFingerprint'];
                 $fingerprintalg = $idpData['certFingerprintAlgorithm'];
 
+                $multiCerts = null;
+                $existsMultiX509Sign = isset($idpData['x509certMulti']) && isset($idpData['x509certMulti']['signing']) && !empty($idpData['x509certMulti']['signing']);
+
+                if ($existsMultiX509Sign) {
+                    $multiCerts = $idpData['x509certMulti']['signing'];
+                }
+
                 # If find a Signature on the Response, validates it checking the original response
-                if ($hasSignedResponse && !OneLogin_Saml2_Utils::validateSign($this->document, $cert, $fingerprint, $fingerprintalg, OneLogin_Saml2_Utils::RESPONSE_SIGNATURE_XPATH)) {
+                if ($hasSignedResponse && !OneLogin_Saml2_Utils::validateSign($this->document, $cert, $fingerprint, $fingerprintalg, OneLogin_Saml2_Utils::RESPONSE_SIGNATURE_XPATH, $multiCerts)) {
                     throw new OneLogin_Saml2_ValidationError(
                         "Signature validation failed. SAML Response rejected",
                         OneLogin_Saml2_ValidationError::INVALID_SIGNATURE
@@ -386,7 +393,7 @@ class OneLogin_Saml2_Response
 
                 # If find a Signature on the Assertion (decrypted assertion if was encrypted)
                 $documentToCheckAssertion = $this->encrypted ? $this->decryptedDocument : $this->document;
-                if ($hasSignedAssertion && !OneLogin_Saml2_Utils::validateSign($documentToCheckAssertion, $cert, $fingerprint, $fingerprintalg, OneLogin_Saml2_Utils::ASSERTION_SIGNATURE_XPATH)) {
+                if ($hasSignedAssertion && !OneLogin_Saml2_Utils::validateSign($documentToCheckAssertion, $cert, $fingerprint, $fingerprintalg, OneLogin_Saml2_Utils::ASSERTION_SIGNATURE_XPATH, $multiCerts)) {
                     throw new OneLogin_Saml2_ValidationError(
                         "Signature validation failed. SAML Response rejected",
                         OneLogin_Saml2_ValidationError::INVALID_SIGNATURE
@@ -642,6 +649,21 @@ class OneLogin_Saml2_Response
             $nameIdFormat = $nameIdData['Format'];
         }
         return $nameIdFormat;
+    }
+
+    /**
+     * Gets the NameID NameQualifier provided by the SAML response from the IdP.
+     *
+     * @return string Name ID NameQualifier
+     */
+    public function getNameIdNameQualifier()
+    {
+        $nameIdNameQualifier = null;
+        $nameIdData = $this->getNameIdData();
+        if (!empty($nameIdData) && isset($nameIdData['NameQualifier'])) {
+            $nameIdNameQualifier = $nameIdData['NameQualifier'];
+        }
+        return $nameIdNameQualifier;
     }
 
     /**
