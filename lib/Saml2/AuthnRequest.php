@@ -117,18 +117,23 @@ REQUESTEDAUTHN;
         $spEntityId = htmlspecialchars($spData['entityId'], ENT_QUOTES);
         $acsUrl = htmlspecialchars($spData['assertionConsumerService']['url'], ENT_QUOTES);
 
-$scoping = '';
-        if (isset($idpData['scoping'])) {
-            $proxyCount = (isset($idpData['scoping']['proxyCount']) ? ' ProxyCount="' . $idpData['scoping']['proxyCount'] . '"' : '');
-            $requesterId = (isset($idpData['scoping']['requesterId']) ? '<samlp:RequesterID>' . $idpData['scoping']['requesterId'] . '</samlp:RequesterID>' : '');
-            $idpList = '';
+        $scoping = '';
+
+        if (!empty($idpData['scoping'])) {
+            $proxyCount  = (!empty($idpData['scoping']['proxyCount']) ? ' ProxyCount="' . $idpData['scoping']['proxyCount'] . '"' : '');
+            $requesterId = (!empty($idpData['scoping']['requesterId']) ? '        <samlp:RequesterID>' . $idpData['scoping']['requesterId'] . '</samlp:RequesterID>' : '');
+            $idpList     = '';
+
             if (isset($idpData['scoping']['idpList'])) {
-                $idpList = '<samlp:IDPList>';
+                $idpList = '        <samlp:IDPList>';
+
                 foreach ($idpData['scoping']['idpList'] as $idpListItem) {
-                    $idpList .= '<samlp:IDPEntry ProviderID="' . $idpListItem . '" />';
+                    $idpList .= '            <samlp:IDPEntry ProviderID="' . $idpListItem . '" />';
                 }
-                $idpList .= '</samlp:IDPList>';
+
+                $idpList .= '        </samlp:IDPList>';
             }
+
             $scoping = <<<SCOPING
     <samlp:Scoping$proxyCount>
        {$idpList}
@@ -136,6 +141,7 @@ $scoping = '';
     </samlp:Scoping>
 SCOPING;
         }
+
         $request = <<<AUTHNREQUEST
 <samlp:AuthnRequest
     xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"

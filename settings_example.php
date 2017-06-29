@@ -69,7 +69,7 @@ $settings = array (
         /*
          * Key rollover
          * If you plan to update the SP x509cert and privateKey
-         * you can define here the new x509cert and it will be 
+         * you can define here the new x509cert and it will be
          * published on the SP metadata so Identity Providers can
          * read them and get ready for rollover.
          */
@@ -113,7 +113,7 @@ $settings = array (
         // 'certFingerprintAlgorithm' => 'sha1',
 
         /* In some scenarios the IdP uses different certificates for
-         * signing/encryption, or is under key rollover phase and more 
+         * signing/encryption, or is under key rollover phase and more
          * than one certificate is published on IdP metadata.
          * In order to handle that the toolkit offers that parameter.
          * (when used, 'x509cert' and 'certFingerprint' values are
@@ -127,19 +127,19 @@ $settings = array (
         //          0 => '<cert2-string>',
         //      )
         // ),
-	
-	 /*
+
+	    /*
          * You can optional set a scoping. Scoping allows a service provider to specify a list of identity
          * providers in an authnRequest to a proxying identity provider. This is an indication to the
          * proxying identity provider, that the service will only deal with the identity providers specified.
          */
-        //'scoping' => [
-        //    // Specifies the number of proxying indirections permissible.
-        //    'proxyCount' => 2,
-        //    // The list of entityIDs for identity providers that are relevant for a service provider in an authnRequest.
-        //    'idpList' => ['entityId'],
-        //    // To allow an identity provider to identify the original requester
-        //    'requesterId' => 'requesterId.nl',
-        //],
+        // 'scoping' => [
+        //      // Specifies the number of proxying indirections permissible.
+        //      'proxyCount' => 2,
+        //      // The list of entityIDs for identity providers that are relevant for a service provider in an authnRequest.
+        //      'idpList' => ['entityId'],
+        //      // To allow an identity provider to identify the original requester
+        //      'requesterId' => 'requesterId.nl',
+        // ],
     ),
 );
