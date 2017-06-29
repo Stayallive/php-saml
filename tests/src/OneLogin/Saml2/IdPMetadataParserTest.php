@@ -1,9 +1,11 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Unit tests for IdPMetadataParser class
  */
-class OneLogin_Saml2_IdPMetadataParserTest extends PHPUnit_Framework_TestCase
+class OneLogin_Saml2_IdPMetadataParserTest extends TestCase
 {
     /**
     * Tests the parseFileXML method of IdPMetadataParser.
@@ -208,7 +210,7 @@ class OneLogin_Saml2_IdPMetadataParserTest extends PHPUnit_Framework_TestCase
         $idpInfo = OneLogin_Saml2_IdPMetadataParser::parseXML($xml);
 
         $newSettings = OneLogin_Saml2_IdPMetadataParser::injectIntoSettings($settingsInfo, $idpInfo);
-        
+
         $this->assertNotEquals($newSettings, $settingsInfo);
         $this->assertEquals($expectedMergedSettings, $newSettings);
     }
