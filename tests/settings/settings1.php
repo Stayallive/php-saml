@@ -34,12 +34,12 @@
         'contactPerson' => array (
             'technical' => array (
                 'givenName' => 'technical_name',
-                'surName' => 'technical_name',
+                'surName' => 'technical_surname',
                 'emailAddress' => 'technical@example.com',
             ),
             'support' => array (
                 'givenName' => 'support_name',
-                'surName' => 'support_name',
+                'surName' => 'support_surname',
                 'emailAddress' => 'support@example.com',
             ),
         ),

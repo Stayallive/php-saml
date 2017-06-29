@@ -45,6 +45,7 @@ class OneLogin_Saml2_MetadataTest extends TestCase
         $this->assertContains('<md:OrganizationName xml:lang="en-US">sp_test</md:OrganizationName>', $metadata);
         $this->assertContains('<md:ContactPerson contactType="technical">', $metadata);
         $this->assertContains('<md:GivenName>technical_name</md:GivenName>', $metadata);
+        $this->assertContains('<md:SurName>technical_surname</md:SurName>', $metadata);
 
         $security['authnRequestsSigned'] = true;
         $security['wantAssertionsSigned'] = true;
