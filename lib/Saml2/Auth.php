@@ -449,7 +449,7 @@ class OneLogin_Saml2_Auth
      */
     public function getAttributeWithFriendlyName($friendlyName)
     {
-        assert('is_string($friendlyName)');
+        assert(is_string($friendlyName));
 
         $value = null;
         if (isset($this->_attributesWithFriendlyName[$friendlyName])) {
