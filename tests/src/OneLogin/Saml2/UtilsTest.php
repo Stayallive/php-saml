@@ -716,7 +716,7 @@ class OneLogin_Saml2_UtilsTest extends TestCase
             OneLogin_Saml2_Utils::parseTime2SAML('invalidtime');
             $this->fail('Exception was not raised');
         } catch (Exception $e) {
-            $this->assertContains('strftime() expects parameter 2 to be', $e->getMessage());
+            $this->assertContains('Failed to parse time string', $e->getMessage());
         }
     }
 
@@ -836,6 +836,25 @@ class OneLogin_Saml2_UtilsTest extends TestCase
     *
     * @covers OneLogin_Saml2_Utils::generateNameId
     */
+    public function testGenerateNameIdWithoutFormat()
+    {
+        $nameIdValue = 'ONELOGIN_ce998811003f4e60f8b07a311dc641621379cfde';
+
+        $nameId = OneLogin_Saml2_Utils::generateNameId(
+            $nameIdValue,
+            null,
+            null
+        );
+
+        $expectedNameId = '<saml:NameID>ONELOGIN_ce998811003f4e60f8b07a311dc641621379cfde</saml:NameID>';
+        $this->assertEquals($nameId, $expectedNameId);
+    }
+
+    /**
+    * Tests the generateNameId method of the OneLogin_Saml2_Utils
+    *
+    * @covers OneLogin_Saml2_Utils::generateNameId
+    */
     public function testGenerateNameIdWithoutSPNameQualifier()
     {
         //$xml = '<root xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">'.$decrypted.'</root>';
@@ -929,7 +948,6 @@ class OneLogin_Saml2_UtilsTest extends TestCase
             // Can't test that on TRAVIS
             $this->markTestSkipped("Can't test that on TRAVIS");
         } else {
-
             if (!isset($_SESSION)) {
                 $_SESSION = array();
             }
@@ -964,7 +982,6 @@ class OneLogin_Saml2_UtilsTest extends TestCase
             // Can't test that on TRAVIS
             $this->markTestSkipped("Can't test that on TRAVIS");
         } else {
-
             $this->assertFalse(OneLogin_Saml2_Utils::isSessionStarted());
 
             $prev = error_reporting(0);
@@ -993,6 +1010,12 @@ class OneLogin_Saml2_UtilsTest extends TestCase
         $cert = file_get_contents($certPath.'sp.crt');
 
         $this->assertNull(OneLogin_Saml2_Utils::calculateX509Fingerprint($key));
+
+        $this->assertNull(OneLogin_Saml2_Utils::calculateX509Fingerprint(""));
+
+        $this->assertNull(OneLogin_Saml2_Utils::calculateX509Fingerprint($settingsInfo['idp']['x509cert']));
+
+        $this->assertEquals('afe71c28ef740bc87425be13a2263d37971da1f9', OneLogin_Saml2_Utils::calculateX509Fingerprint(OneLogin_Saml2_Utils::formatCert($settingsInfo['idp']['x509cert'])));
 
         $this->assertEquals('afe71c28ef740bc87425be13a2263d37971da1f9', OneLogin_Saml2_Utils::calculateX509Fingerprint($cert));
 

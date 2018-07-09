@@ -2,6 +2,12 @@
     "name": "stayallive/php-saml",
     "description": "OneLogin PHP SAML Toolkit",
     "license": "MIT",
+    "homepage": "https://developers.onelogin.com/saml/php",
+    "keywords": [
+        "saml",
+        "saml2",
+        "onelogin"
+    ],
     "autoload": {
         "classmap": [
             "lib/Saml",
@@ -11,6 +17,7 @@
     "require": {
         "php": ">=7.0",
         "ext-dom": "*",
+        "ext-curl": "*",
         "ext-openssl": "*",
         "robrichards/xmlseclibs": "3.*"
     },
@@ -23,8 +30,6 @@
         "squizlabs/php_codesniffer": "2.9.*"
     },
     "suggest": {
-        "ext-openssl": "Install openssl lib in order to handle with x509 certs (require to support sign and encryption)",
-        "ext-curl": "Install curl lib to be able to use the IdPMetadataParser for parsing remote XMLs",
         "ext-gettext": "Install gettext and php5-gettext libs to handle translations"
     }
 }
